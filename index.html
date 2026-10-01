@@ -232,21 +232,6 @@
 
       .action svg { width: 18px; height: 18px; }
 
-      .copy-card {
-        appearance: none;
-        -webkit-appearance: none;
-      }
-
-      .copy-note {
-        min-height: 22px;
-        margin: 17px 4px 0;
-        color: var(--muted);
-        font-size: 13px;
-        line-height: 1.5;
-      }
-
-      .copy-note strong { color: var(--ink); }
-
       .foot {
         margin: 30px 4px 0;
         padding-top: 18px;
@@ -322,8 +307,8 @@
       <section class="identity" aria-labelledby="page-heading">
         <div class="status">Mari terhubung</div>
         <div class="intro">
-          <h1 id="page-heading">Temukan<br>aku di sini.</h1>
-          <p class="hello">Ikuti Instagram, simpan nomor WhatsApp, atau kunjungi website.</p>
+          <h1 id="page-heading">Your personal<br>trainer.</h1>
+          <p class="hello">Ikuti Instagram, chat lewat WhatsApp, atau kunjungi website.</p>
         </div>
       </section>
 
@@ -344,20 +329,20 @@
             </span>
           </a>
 
-          <button class="link-card copy-card" type="button" id="copyWa" aria-describedby="copyStatus" aria-label="Salin nomor WhatsApp 088287269056">
+          <a class="link-card" href="https://wa.me/6288287269056" target="_blank" rel="noopener noreferrer" aria-label="Buka chat WhatsApp 088287269056">
             <span class="icon-wrap" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M8.5 8.3c.3 2.9 2.3 5 5.2 5.7l1.2-1.2c.2-.2.5-.2.7-.1l2 .9"/>
               </svg>
             </span>
             <span class="text">
-              <span class="label">WhatsApp · ketuk untuk salin</span>
+              <span class="label">WhatsApp</span>
               <span class="value">0882 8726 9056</span>
             </span>
             <span class="action" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="10" height="10" rx="2"/><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
             </span>
-          </button>
+          </a>
 
           <a class="link-card" href="https://yourtrainer.my.id/?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener noreferrer" aria-label="Buka website yourtrainer.my.id">
             <span class="icon-wrap" aria-hidden="true">
@@ -375,48 +360,9 @@
           </a>
         </div>
 
-        <p class="copy-note" id="copyStatus" role="status" aria-live="polite">Nomor WhatsApp bisa disalin sekali ketuk.</p>
         <p class="foot">Instagram · WhatsApp · Website</p>
       </section>
     </main>
 
-    <script>
-      (function () {
-        var button = document.getElementById('copyWa');
-        var status = document.getElementById('copyStatus');
-        var phone = '088287269056';
-        var timer;
-
-        function showCopied() {
-          status.innerHTML = '<strong>Nomor tersalin.</strong> Tempel di WhatsApp untuk mulai chat.';
-          clearTimeout(timer);
-          timer = setTimeout(function () {
-            status.textContent = 'Nomor WhatsApp bisa disalin sekali ketuk.';
-          }, 3200);
-        }
-
-        function fallbackCopy() {
-          var area = document.createElement('textarea');
-          area.value = phone;
-          area.setAttribute('readonly', '');
-          area.style.position = 'fixed';
-          area.style.opacity = '0';
-          document.body.appendChild(area);
-          area.select();
-          var ok = document.execCommand('copy');
-          document.body.removeChild(area);
-          if (ok) showCopied();
-          else status.innerHTML = '<strong>Belum tersalin.</strong> Tekan lama nomor lalu pilih Salin.';
-        }
-
-        button.addEventListener('click', function () {
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(phone).then(showCopied).catch(fallbackCopy);
-          } else {
-            fallbackCopy();
-          }
-        });
-      })();
-    </script>
   </body>
 </html>
